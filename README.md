@@ -1,7 +1,7 @@
 # CraftCircle (working name; configurable in `server/src/config/brand.ts`)
 
 Handmade creator-collective marketplace. **Status: the backend covers the core marketplace loop
-(apply -> approve -> list -> review -> publish -> sell -> earn -> get paid) and is tested. The customer storefront and the
+(apply -> approve -> list -> review -> publish -> sell -> earn -> get paid)
 link: https://craftcircle-production.up.railway.app/
 
 > **Just want it online for a project?** See [`DEPLOY.md`](DEPLOY.md): one free service + free MongoDB Atlas, no payment/email/image accounts (`DEMO_MODE=true`).
