@@ -2,8 +2,7 @@
 
 Handmade creator-collective marketplace. **Status: the backend covers the core marketplace loop
 (apply -> approve -> list -> review -> publish -> sell -> earn -> get paid) and is tested. The customer storefront and the
-creator application form, the creator portal AND the admin dashboard are built (`client/`). Remaining gaps are listed at the bottom.**
-Route list: `docs/API.md`. Test notes: `docs/TESTING.md`.
+link: https://craftcircle-production.up.railway.app/
 
 > **Just want it online for a project?** See [`DEPLOY.md`](DEPLOY.md): one free service + free MongoDB Atlas, no payment/email/image accounts (`DEMO_MODE=true`).
 
