@@ -2,7 +2,8 @@
 
 Handmade creator-collective marketplace. **Status: the backend covers the core marketplace loop
 (apply -> approve -> list -> review -> publish -> sell -> earn -> get paid)
-link: https://craftcircle-production.up.railway.app/
+
+##link: https://craftcircle-production.up.railway.app/
 
 > **Just want it online for a project?** See [`DEPLOY.md`](DEPLOY.md): one free service + free MongoDB Atlas, no payment/email/image accounts (`DEMO_MODE=true`).
 
