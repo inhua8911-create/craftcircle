@@ -1,0 +1,12 @@
+{
+  "name": "craftcircle",
+  "private": true,
+  "scripts": {
+    "install:all": "npm --prefix client install && npm --prefix server install",
+    "build": "npm --prefix client ci --include=dev && npm --prefix client run build && npm --prefix server ci --include=dev && npm --prefix server run build",
+    "start": "node server/dist/index.js",
+    "reseed": "node server/dist/seed.js --reset",
+    "load-images": "node server/dist/loadImages.js"
+  },
+  "engines": { "node": ">=22" }
+}

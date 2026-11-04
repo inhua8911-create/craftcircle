@@ -1,0 +1,18 @@
+# One-click-ish deploy on Render (free plan). You only fill in the three values marked sync:false.
+services:
+  - type: web
+    name: craftcircle
+    runtime: node
+    plan: free
+    buildCommand: npm run build
+    startCommand: npm start
+    healthCheckPath: /api/v1/health
+    envVars:
+      - { key: NODE_VERSION, value: "22" }
+      - { key: NODE_ENV, value: production }
+      - { key: DEMO_MODE, value: "true" }
+      - { key: PAYMENT_MODE, value: mock }
+      - { key: JWT_SECRET, generateValue: true }
+      - { key: MONGODB_URI, sync: false }
+      - { key: ADMIN_BOOTSTRAP_EMAIL, sync: false }
+      - { key: ADMIN_BOOTSTRAP_PASSWORD, sync: false }

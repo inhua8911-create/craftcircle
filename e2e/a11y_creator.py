@@ -1,0 +1,17 @@
+import os, sys, time
+sys.path.insert(0, os.path.dirname(__file__))
+from browser import *
+"""axe-core WCAG 2.1 A/AA scan of the creator pages. Env: AXE_PATH (axe.min.js), CREATOR_EMAIL, CREATOR_PASSWORD."""
+axe = open(os.environ.get("AXE_PATH", "node_modules/axe-core/axe.min.js")).read()
+d = driver(1366, 1000); total = 0
+try:
+    go(d, "/login"); fill(d, "Email", os.environ.get("CREATOR_EMAIL", "asha-menon@sample.craftcircle.test")); fill(d, "Password", os.environ.get("CREATOR_PASSWORD", "sample-password-123")); click_exact(d, "button", "Sign in"); WebDriverWait(d, 15).until(lambda x: "/login" not in x.current_url)
+    go(d, "/creator/products"); wait(d, "table tbody tr"); pid = d.find_element(By.CSS_SELECTOR, "table tbody tr a").get_attribute("href").replace(BASE, "")
+    for p in ["/creator/dashboard", "/creator/products", "/creator/products/new", pid, "/creator/earnings", "/creator/incentives", "/creator/notifications", "/creator/profile", "/account/notifications"]:
+        go(d, p); wait(d, "main h1"); time.sleep(1.8)
+        d.execute_script(axe)
+        res = d.execute_async_script("const cb=arguments[arguments.length-1]; axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}}).then(r=>cb(r.violations.map(v=>({id:v.id,impact:v.impact,help:v.help,n:v.nodes.length,nodes:v.nodes.slice(0,2).map(n=>n.target.join(' ')+' :: '+(n.any[0]?.message||n.all[0]?.message||''))}))))")
+        total += len(res); print(f"{p[:44]:46} violations={len(res)}")
+        for v in res: print(f"   [{v['impact']}] {v['id']} x{v['n']}: {v['help']}"); [print("        ", n[:180]) for n in v['nodes']]
+finally: d.quit()
+print("TOTAL", total)
